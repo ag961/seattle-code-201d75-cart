@@ -1,22 +1,32 @@
 'use strict';
-
+/* Cart.itemsArray = []; */
 // Cart constructor.
 const Cart = function(items) {
   // this.items is an array of CartItem instances.
   this.items = items;
+/*   Cart.itemsArray.push(items); */
 };
 
 Cart.prototype.addItem = function(product, quantity) {
   // DONE: Fill in this instance method to create a new CartItem and add it to this.items
-  let myItem = new CartItem(product, quantity);
-  this.items.push(myItem);
+    let myItem = new CartItem(product, quantity);
+
+    this.items.push(myItem);
+
 };
+
+
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  let stringifiedCart = JSON.stringify(this.items);
+  localStorage.setItem('cart', stringifiedCart);
 };
 
 Cart.prototype.removeItem = function(item) {
+console.log(item);
+  
+  cart.items.splice(item, 1)
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
   // 'please learn the splice method because you will need it'
